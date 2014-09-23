@@ -1,11 +1,10 @@
-html {
+* {
   -webkit-tap-highlight-color: transparent;
   -webkit-tap-highlight-color: transparent;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
-          user-select: none;
-  padding-bottom: 80px; }
+          user-select: none; }
 
 body {
   background-color: #fff;

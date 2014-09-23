@@ -1,11 +1,10 @@
 $break-small: 40em;
 $break-medium: 60em;
 
-html {
+* {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-tap-highlight-color: transparent;
     user-select: none;
-    padding-bottom: 80px;
 }
 body {
     background-color: #fff;
