@@ -1,0 +1,25 @@
+!!! 5
+
+%html{:lang => "en"}
+
+  %head
+    %meta{:charset => "utf-8"}
+    %title Arctiles part deux
+    %link(type="text/css" rel="stylesheet" href="style.css")
+    %script(src="paper-full.min.js")
+    %script(src="randomColor.js")
+    %script(src="app.js" canvas="papercanvas")
+
+  %body
+    %canvas#papercanvas{:width => "600", :height => "600"}
+    %div.ui
+      %ul
+        %li#jumble jumble
+        %li#larger larger
+        %li#smaller smaller
+        %li#addring + ring
+        %li#subtractring &ndash; ring
+        %li#color mono
+        %li#luminosity dark
+        %li#png png
+        %li#svg svg

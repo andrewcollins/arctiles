@@ -1,0 +1,36 @@
+body {
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font: 12px helvetica;
+  color: #888; }
+
+canvas {
+  background-color: #fff;
+  margin: 0; }
+
+.ui {
+  width: 100%; }
+  .ui > ul {
+    margin: 16px auto 8px;
+    text-align: center;
+    display: block;
+    padding: 0; }
+    .ui > ul li {
+      display: inline-block;
+      border: 1px solid #ddd;
+      width: 64px;
+      text-align: center;
+      padding: 7px 0 6px;
+      border-radius: 8px;
+      margin: 0 0 6px 0; }
+      .ui > ul li:hover {
+        background-color: #ddd;
+        color: #444;
+        cursor: pointer;
+        -webkit-user-select: none;
+           -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none; }
