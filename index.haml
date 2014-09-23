@@ -4,7 +4,7 @@
 
   %head
     %meta{:charset => "utf-8"}
-    %meta{:name => "viewport", :content => "width=device-width, user-scalable=no, initial-scale=.5"}
+    %meta{:name => "viewport", :content => "user-scalable=no, initial-scale=1, minimal-ui=true"}
     %title Arctiles
     %link(type="text/css" rel="stylesheet" href="style.css")
     %script(src="paper-full.min.js")
@@ -12,7 +12,7 @@
     %script(src="app.js" canvas="papercanvas")
 
   %body
-    %canvas#papercanvas{:width => "600", :height => "600"}
+    %canvas#papercanvas{}
     %div.ui
       %ul
         %li#jumble jumble

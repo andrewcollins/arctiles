@@ -1,10 +1,11 @@
-* {
+html {
   -webkit-tap-highlight-color: transparent;
   -webkit-tap-highlight-color: transparent;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
-          user-select: none; }
+          user-select: none;
+  padding-bottom: 80px; }
 
 body {
   background-color: #fff;
@@ -12,8 +13,9 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
-  font: 12px helvetica;
-  color: #888; }
+  font-size: 100%;
+  font-family: helvetica,arial,sans-serif;
+  color: #aaa; }
 
 canvas {
   background-color: #fff;
@@ -22,7 +24,7 @@ canvas {
 .ui {
   width: 100%; }
   .ui > ul {
-    margin: 16px auto 8px;
+    margin: 12px auto 8px;
     text-align: center;
     display: block;
     padding: 0; }
@@ -30,10 +32,21 @@ canvas {
       display: inline-block;
       border: 1px solid #ddd;
       text-align: center;
-      padding: 7px 11px 6px;
+      padding: 7px 10px;
       border-radius: 8px;
       margin: 0 0 6px 0; }
       .ui > ul li:hover, .ui > ul li:active {
         background-color: #ddd;
         color: #444;
         cursor: pointer; }
+    @media only screen and (max-width: 40em) {
+      .ui > ul {
+        margin: 4px auto 0;
+        font-size: 1.1em; } }
+    @media only screen and (min-width: 40em) and (max-width: 60em) {
+      .ui > ul {
+        margin: 4px auto 0;
+        font-size: 1.2em; } }
+    @media only screen and (min-width: 60em) {
+      .ui > ul {
+        font-size: .9em; } }
