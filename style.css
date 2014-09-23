@@ -1,3 +1,11 @@
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none; }
+
 body {
   background-color: #fff;
   margin: 0;
@@ -21,16 +29,11 @@ canvas {
     .ui > ul li {
       display: inline-block;
       border: 1px solid #ddd;
-      width: 64px;
       text-align: center;
-      padding: 7px 0 6px;
+      padding: 7px 11px 6px;
       border-radius: 8px;
       margin: 0 0 6px 0; }
-      .ui > ul li:hover {
+      .ui > ul li:hover, .ui > ul li:active {
         background-color: #ddd;
         color: #444;
-        cursor: pointer;
-        -webkit-user-select: none;
-           -moz-user-select: none;
-            -ms-user-select: none;
-                user-select: none; }
+        cursor: pointer; }

@@ -1,3 +1,8 @@
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
 body {
     background-color: #fff;
     margin: 0;
@@ -21,16 +26,14 @@ canvas {
         li {
             display: inline-block;
             border: 1px solid #ddd;
-            width: 64px;
             text-align: center;
-            padding: 7px 0 6px;
+            padding: 7px 11px 6px;
             border-radius: 8px;
             margin: 0 0 6px 0;
-            &:hover {
+            &:hover, &:active {
                 background-color: #ddd;
                 color: #444;
                 cursor: pointer;
-                user-select: none;
             }
         }
     }

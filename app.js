@@ -174,12 +174,10 @@ addEvent(document.getElementById("subtractring"), "click", function() {
 });
 addEvent(document.getElementById("smaller"), "click", function() {
     if (sizeMod < 50) sizeMod += 1;
-    setColors();
     newLayout();
 });
 addEvent(document.getElementById("larger"), "click", function() {
     if (Math.abs(sizeMod) < cols) sizeMod -= 1;
-    setColors();
     newLayout();
 });
 
