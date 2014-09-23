@@ -3,10 +3,6 @@ window.onload = function() {
 // Get a reference to the canvas object
 var canvas = document.getElementById('papercanvas');
 
-// Make canvas full width & (almost) full height
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight - 100;
-
 // Create an empty project and a view for the canvas:
 paper.setup(canvas);
 
@@ -75,33 +71,33 @@ function buildGrid (arc,rows,cols,centerPoint) {
 }
 
 function newLayout (centerPoint) {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight - 100;
+    paper.view.viewSize.width = window.innerWidth;
+    paper.view.viewSize.height = window.innerHeight - 100;
 
     // possible # of cols, ranked aesthetically
-    if (canvas.width % 7 == 0) {
+    if (paper.view.viewSize.width % 7 == 0) {
         cols = 7;
-    } else if (canvas.width % 8 == 0) {
+    } else if (paper.view.viewSize.width % 8 == 0) {
         cols = 8;
-    } else if (canvas.width % 6 == 0) {
+    } else if (paper.view.viewSize.width % 6 == 0) {
         cols = 6;
-    } else if (canvas.width % 9 == 0) {
+    } else if (paper.view.viewSize.width % 9 == 0) {
         cols = 9;
-    } else if (canvas.width % 5 == 0) {
+    } else if (paper.view.viewSize.width % 5 == 0) {
         cols = 5;
-    } else if (canvas.width % 10 == 0) {
+    } else if (paper.view.viewSize.width % 10 == 0) {
         cols = 10;
-    } else if (canvas.width % 4 == 0) {
+    } else if (paper.view.viewSize.width % 4 == 0) {
         cols = 4;
-    } else if (canvas.width % 11 == 0) {
+    } else if (paper.view.viewSize.width % 11 == 0) {
         cols = 11;
     } else {
         cols = 7;
     }
     cols += sizeMod;
     if (cols < 2) cols = 2;
-    size = Math.floor(canvas.width/cols);
-    rows = Math.floor(canvas.height/size);
+    size = Math.floor(paper.view.viewSize.width/cols);
+    rows = Math.floor(paper.view.viewSize.height/size);
 
     paper.project.activeLayer.removeChildren();
     buildGrid(masterArc(size),rows,cols,centerPoint);
