@@ -176,6 +176,12 @@ addEvent(document.getElementById("larger"), "click", function() {
     if (Math.abs(sizeMod) < cols) sizeMod -= 1;
     newLayout();
 });
+addEvent(document.getElementById("info"), "click", function() {
+    document.getElementById("slide").className = "show-nav";
+});
+addEvent(document.getElementById("closeinfo"), "click", function() {
+    document.getElementById("slide").className = "";
+});
 
 var grid = [];
 var directions = [];
