@@ -1,6 +1,11 @@
 $break-small: 40em;
 $break-medium: 60em;
-
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-tap-highlight-color: transparent;
@@ -20,17 +25,36 @@ canvas {
     background-color: #fff;
     margin: 0;
 }
-.ui {
+#slide-wrapper {
+    overflow: hidden;
+    position: relative;
     width: 100%;
+    height: 90px;
+}
+#slide {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    -webkit-transition: .2s ease all;
+    transition: .2s ease all;
+}
+#slide.show-nav {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+.ui, .info {
+    width: 100%;
+    height: 100%;
+    text-align: center;
     & > ul {
         margin: 12px auto 8px;
-        text-align: center;
         display: block;
         padding: 0;
         li {
             display: inline-block;
             border: 1px solid #ddd;
-            text-align: center;
             padding: 7px 10px;
             border-radius: 8px;
             margin: 0 0 6px 0;
@@ -42,7 +66,10 @@ canvas {
         }
         @media only screen and (max-width: $break-small) {
             margin: 4px auto 0;
-            font-size: 1.1em;
+            font-size: 1em;
+            li {
+                padding: 7px 13px;
+            }
         }
         @media only screen and (min-width: $break-small) and (max-width: $break-medium) {
             margin: 4px auto 0;
@@ -51,5 +78,35 @@ canvas {
         @media only screen and (min-width: $break-medium) {
             font-size: .9em;
         }
+    }
+}
+.info {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    & > ul {
+        li {
+            color: #333;
+            border: none;
+            &:hover, &:active {
+                background-color: #fff;
+                color: #333;
+            }
+            &#closeinfo {
+                color: #fff;
+                background-color: #aaa;
+                padding: 0;
+                border: 3px solid #aaa;
+                border-radius: 20px;
+                height: 1.5em;
+                width: 1.5em;
+                font-weight: bold;
+            }
+        }
+    }
+    .colophon {
+        padding: 0;
+        margin: 0;
+        color: #aaa;
     }
 }

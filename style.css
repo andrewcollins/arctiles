@@ -1,3 +1,11 @@
+html {
+  -moz-box-sizing: border-box;
+       box-sizing: border-box; }
+
+*, *:before, *:after {
+  -moz-box-sizing: inherit;
+       box-sizing: inherit; }
+
 * {
   -webkit-tap-highlight-color: transparent;
   -webkit-tap-highlight-color: transparent;
@@ -20,32 +28,79 @@ canvas {
   background-color: #fff;
   margin: 0; }
 
-.ui {
-  width: 100%; }
-  .ui > ul {
+#slide-wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 90px; }
+
+#slide {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+      transform: translateX(0);
+  -webkit-transition: .2s ease all;
+  transition: .2s ease all; }
+
+#slide.show-nav {
+  -webkit-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+      transform: translateX(-100%); }
+
+.ui, .info {
+  width: 100%;
+  height: 100%;
+  text-align: center; }
+  .ui > ul, .info > ul {
     margin: 12px auto 8px;
-    text-align: center;
     display: block;
     padding: 0; }
-    .ui > ul li {
+    .ui > ul li, .info > ul li {
       display: inline-block;
       border: 1px solid #ddd;
-      text-align: center;
       padding: 7px 10px;
       border-radius: 8px;
       margin: 0 0 6px 0; }
-      .ui > ul li:hover, .ui > ul li:active {
+      .ui > ul li:hover, .ui > ul li:active, .info > ul li:hover, .info > ul li:active {
         background-color: #ddd;
         color: #444;
         cursor: pointer; }
     @media only screen and (max-width: 40em) {
-      .ui > ul {
+      .ui > ul, .info > ul {
         margin: 4px auto 0;
-        font-size: 1.1em; } }
+        font-size: 1em; }
+        .ui > ul li, .info > ul li {
+          padding: 7px 13px; } }
     @media only screen and (min-width: 40em) and (max-width: 60em) {
-      .ui > ul {
+      .ui > ul, .info > ul {
         margin: 4px auto 0;
         font-size: 1.2em; } }
     @media only screen and (min-width: 60em) {
-      .ui > ul {
+      .ui > ul, .info > ul {
         font-size: .9em; } }
+
+.info {
+  position: absolute;
+  top: 0;
+  left: 100%; }
+  .info > ul li {
+    color: #333;
+    border: none; }
+    .info > ul li:hover, .info > ul li:active {
+      background-color: #fff;
+      color: #333; }
+    .info > ul li#closeinfo {
+      color: #fff;
+      background-color: #aaa;
+      padding: 0;
+      border: 3px solid #aaa;
+      border-radius: 20px;
+      height: 1.5em;
+      width: 1.5em;
+      font-weight: bold; }
+  .info .colophon {
+    padding: 0;
+    margin: 0;
+    color: #aaa; }

@@ -12,16 +12,26 @@
     %script(src="app.js" canvas="papercanvas")
 
   %body
-    %canvas#papercanvas{}
-    %div.ui
-      %ul
-        %li#jumble jumble
-        %li#larger larger
-        %li#smaller smaller
-        %li#addring + ring
-        %li#subtractring &ndash; ring
-        %li#color mono
-        %li#luminosity dark
-        / %li#png png
-        / %li#svg svg
-        %li#info ?
+    %canvas#papercanvas
+    #slide-wrapper
+      #slide
+        %div.ui
+          %ul
+            %li#jumble jumble
+            %li#larger larger
+            %li#smaller smaller
+            %li#addring + ring
+            %li#subtractring &ndash; ring
+            %li#color mono
+            %li#luminosity dark
+            / %li#png png
+            / %li#svg svg
+            %li#info ?
+
+        %div.info
+          %ul
+            %li Github
+            %li Twitter
+            %li Hire me
+            %li#closeinfo &times;
+          .colophon Made with love in SF
