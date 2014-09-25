@@ -87,20 +87,31 @@ canvas {
   left: 100%; }
   .info > ul li {
     color: #333;
-    border: none; }
+    border: none;
+    padding: 0;
+    width: 20%; }
     .info > ul li:hover, .info > ul li:active {
       background-color: #fff;
-      color: #333; }
-    .info > ul li#closeinfo {
-      color: #fff;
-      background-color: #aaa;
-      padding: 0;
-      border: 3px solid #aaa;
-      border-radius: 20px;
-      height: 1.5em;
-      width: 1.5em;
-      font-weight: bold; }
+      color: #333;
+      cursor: default; }
+    .info > ul li .icon {
+      height: 42px;
+      width: 42px;
+      fill: #ddd; }
+      .info > ul li .icon.twitter:hover {
+        fill: #00aced; }
+      .info > ul li .icon.github:hover {
+        fill: brown; }
+      .info > ul li .icon.home:hover {
+        fill: #ee3a3f; }
+      .info > ul li .icon.close {
+        width: 30px;
+        height: 30px;
+        padding: 0 0 10px; }
+      .info > ul li .icon.close:hover {
+        fill: #f00; }
   .info .colophon {
     padding: 0;
     margin: 0;
-    color: #aaa; }
+    color: #aaa;
+    font-size: .8em; }

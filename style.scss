@@ -88,19 +88,34 @@ canvas {
         li {
             color: #333;
             border: none;
+            padding: 0;
+            width: 20%;
             &:hover, &:active {
                 background-color: #fff;
                 color: #333;
+                cursor: default;
             }
-            &#closeinfo {
-                color: #fff;
-                background-color: #aaa;
-                padding: 0;
-                border: 3px solid #aaa;
-                border-radius: 20px;
-                height: 1.5em;
-                width: 1.5em;
-                font-weight: bold;
+            .icon {
+                height: 42px;
+                width: 42px;
+                fill: #ddd;
+                &.twitter:hover {
+                    fill: #00aced;
+                }
+                &.github:hover {
+                    fill: brown;
+                }
+                &.home:hover {
+                    fill: #ee3a3f;
+                }
+                &.close {
+                    width: 30px;
+                    height: 30px;
+                    padding: 0 0 10px;
+                }
+                &.close:hover {
+                    fill: #f00;
+                }
             }
         }
     }
@@ -108,5 +123,6 @@ canvas {
         padding: 0;
         margin: 0;
         color: #aaa;
+        font-size: .8em;
     }
 }
