@@ -1,5 +1,7 @@
 $break-small: 40em;
 $break-medium: 60em;
+$light-grey: #bbb;
+$dark-grey: #444;
 html {
     box-sizing: border-box;
 }
@@ -19,7 +21,13 @@ body {
     height: 100%;
     font-size: 100%;
     font-family: helvetica,arial,sans-serif;
-    color: #aaa;
+    color: $light-grey;
+    a, a:visited {
+        color: lighten(#00aced, 10%);
+        &:hover, &:active {
+            color: darken(#00aced, 10%);
+        }
+    }
 }
 canvas {
     background-color: #fff;
@@ -29,7 +37,9 @@ canvas {
     overflow: hidden;
     position: relative;
     width: 100%;
-    height: 90px;
+    height: 96px;
+    padding: 0;
+    margin: 0;
 }
 #slide {
     width: 100%;
@@ -49,18 +59,18 @@ canvas {
     height: 100%;
     text-align: center;
     & > ul {
-        margin: 12px auto 8px;
+        margin: 10px auto 8px;
         display: block;
         padding: 0;
         li {
             display: inline-block;
-            border: 1px solid #ddd;
-            padding: 7px 10px;
-            border-radius: 8px;
+            border: 1px solid lighten($light-grey, 10%);
+            padding: 6px 12px 6px;
+            border-radius: 18px;
             margin: 0 0 6px 0;
             &:hover, &:active {
-                background-color: #ddd;
-                color: #444;
+                background-color: lighten($light-grey, 10%);
+                color: $dark-grey;
                 cursor: pointer;
             }
         }
@@ -69,14 +79,16 @@ canvas {
             font-size: 1em;
             li {
                 padding: 7px 13px;
+
             }
         }
         @media only screen and (min-width: $break-small) and (max-width: $break-medium) {
             margin: 4px auto 0;
-            font-size: 1.2em;
+            font-size: .9em;
         }
         @media only screen and (min-width: $break-medium) {
             font-size: .9em;
+            margin: 8px auto 0;
         }
     }
 }
@@ -86,35 +98,40 @@ canvas {
     left: 100%;
     & > ul {
         li {
-            color: #333;
+            color: $light-grey;
             border: none;
+            border-radius: 0;
             padding: 0;
             width: 20%;
+            @media only screen and (min-width: $break-medium) {
+                width: 100px;
+                color: #f00 !important;
+            }
             &:hover, &:active {
                 background-color: #fff;
-                color: #333;
                 cursor: default;
             }
             .icon {
                 height: 42px;
                 width: 42px;
-                fill: #ddd;
+                fill: $light-grey;
                 &.twitter:hover {
                     fill: #00aced;
                 }
                 &.github:hover {
-                    fill: brown;
+                    fill: #336699;
                 }
                 &.home:hover {
                     fill: #ee3a3f;
                 }
                 &.close {
-                    width: 30px;
-                    height: 30px;
+                    width: 28px;
+                    height: 28px;
                     padding: 0 0 10px;
                 }
                 &.close:hover {
-                    fill: #f00;
+                    fill: $dark-grey;
+                    cursor: pointer;
                 }
             }
         }
@@ -122,7 +139,7 @@ canvas {
     .colophon {
         padding: 0;
         margin: 0;
-        color: #aaa;
+        color: $light-grey;
         font-size: .8em;
     }
 }

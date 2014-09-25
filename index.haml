@@ -40,15 +40,20 @@
         %div.info
           %ul
             %li
-              %svg.github.icon
-                %use(xlink:href="#icon-github")
+              %a(href="https://github.com/andrewcollins/arctiles" target="_blank")
+                %svg.github.icon
+                  %use(xlink:href="#icon-github")
             %li
-              %svg.twitter.icon
-                %use(xlink:href="#icon-twitter")
+              %a(href="https://twitter.com/inrgbwetrust" target="_blank")
+                %svg.twitter.icon
+                  %use(xlink:href="#icon-twitter")
             %li
-              %svg.home.icon
-                %use(xlink:href="#icon-home")
+              %a(href="http://inrgbwetrust.com/" target="_blank")
+                %svg.home.icon
+                  %use(xlink:href="#icon-home")
             %li#closeinfo
               %svg.close.icon
                 %use(xlink:href="#icon-close")
-          .colophon Made with love in SF
+          .colophon
+            Made with love in San Francisco using
+            %a(href="http://paperjs.org/" target="_blank")Paper.js

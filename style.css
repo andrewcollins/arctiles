@@ -22,7 +22,11 @@ body {
   height: 100%;
   font-size: 100%;
   font-family: helvetica,arial,sans-serif;
-  color: #aaa; }
+  color: #bbb; }
+  body a, body a:visited {
+    color: #21c2ff; }
+    body a:hover, body a:active, body a:visited:hover, body a:visited:active {
+      color: #0087ba; }
 
 canvas {
   background-color: #fff;
@@ -32,7 +36,9 @@ canvas {
   overflow: hidden;
   position: relative;
   width: 100%;
-  height: 90px; }
+  height: 96px;
+  padding: 0;
+  margin: 0; }
 
 #slide {
   width: 100%;
@@ -54,17 +60,17 @@ canvas {
   height: 100%;
   text-align: center; }
   .ui > ul, .info > ul {
-    margin: 12px auto 8px;
+    margin: 10px auto 8px;
     display: block;
     padding: 0; }
     .ui > ul li, .info > ul li {
       display: inline-block;
-      border: 1px solid #ddd;
-      padding: 7px 10px;
-      border-radius: 8px;
+      border: 1px solid #d4d4d4;
+      padding: 6px 12px 6px;
+      border-radius: 18px;
       margin: 0 0 6px 0; }
       .ui > ul li:hover, .ui > ul li:active, .info > ul li:hover, .info > ul li:active {
-        background-color: #ddd;
+        background-color: #d4d4d4;
         color: #444;
         cursor: pointer; }
     @media only screen and (max-width: 40em) {
@@ -76,42 +82,48 @@ canvas {
     @media only screen and (min-width: 40em) and (max-width: 60em) {
       .ui > ul, .info > ul {
         margin: 4px auto 0;
-        font-size: 1.2em; } }
+        font-size: .9em; } }
     @media only screen and (min-width: 60em) {
       .ui > ul, .info > ul {
-        font-size: .9em; } }
+        font-size: .9em;
+        margin: 8px auto 0; } }
 
 .info {
   position: absolute;
   top: 0;
   left: 100%; }
   .info > ul li {
-    color: #333;
+    color: #bbb;
     border: none;
+    border-radius: 0;
     padding: 0;
     width: 20%; }
+    @media only screen and (min-width: 60em) {
+      .info > ul li {
+        width: 100px;
+        color: #f00 !important; } }
     .info > ul li:hover, .info > ul li:active {
       background-color: #fff;
-      color: #333;
       cursor: default; }
     .info > ul li .icon {
       height: 42px;
       width: 42px;
-      fill: #ddd; }
+      fill: #bbb; }
       .info > ul li .icon.twitter:hover {
         fill: #00aced; }
       .info > ul li .icon.github:hover {
-        fill: brown; }
+        fill: #336699; }
       .info > ul li .icon.home:hover {
         fill: #ee3a3f; }
       .info > ul li .icon.close {
-        width: 30px;
-        height: 30px;
+        width: 28px;
+        height: 28px;
         padding: 0 0 10px; }
       .info > ul li .icon.close:hover {
-        fill: #f00; }
+        fill: #444;
+        cursor: pointer; }
   .info .colophon {
     padding: 0;
     margin: 0;
-    color: #aaa;
+    color: #bbb;
     font-size: .8em; }
