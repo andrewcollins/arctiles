@@ -7,5 +7,4 @@ to do:
 - cursor position input for arc size
 - export svg
 - export png
-- fastclick
 - palette history

@@ -8,8 +8,8 @@ html {
 *, *:before, *:after {
     box-sizing: inherit;
 }
-* {
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+* * {
+    -webkit-tap-highlight-color: rgba(255,255,255,0.5) !important;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
 }
@@ -65,13 +65,24 @@ canvas {
         li {
             display: inline-block;
             border: 1px solid lighten($light-grey, 10%);
-            padding: 6px 12px 6px;
+            padding: 6px 11px;
             border-radius: 18px;
             margin: 0 0 6px 0;
-            &:hover, &:active {
-                background-color: lighten($light-grey, 10%);
-                color: $dark-grey;
+
+            &:hover {
                 cursor: pointer;
+                .no-touch & {
+                    background-color: lighten($light-grey, 10%);
+                    color: $dark-grey;
+                }
+            }
+            &:active {
+                background-color: #fff;
+                color: $dark-grey;
+                border-color: $dark-grey;
+                .no-touch & {
+                    border-color: #fff;
+                }
             }
         }
         @media only screen and (max-width: $break-small) {

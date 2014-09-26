@@ -6,8 +6,8 @@ html {
   -moz-box-sizing: inherit;
        box-sizing: inherit; }
 
-* {
-  -webkit-tap-highlight-color: transparent;
+* * {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0.5) !important;
   -webkit-tap-highlight-color: transparent;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -66,13 +66,20 @@ canvas {
     .ui > ul li, .info > ul li {
       display: inline-block;
       border: 1px solid #d4d4d4;
-      padding: 6px 12px 6px;
+      padding: 6px 11px;
       border-radius: 18px;
       margin: 0 0 6px 0; }
-      .ui > ul li:hover, .ui > ul li:active, .info > ul li:hover, .info > ul li:active {
-        background-color: #d4d4d4;
-        color: #444;
+      .ui > ul li:hover, .info > ul li:hover {
         cursor: pointer; }
+        .no-touch .ui > ul li:hover, .no-touch .info > ul li:hover {
+          background-color: #d4d4d4;
+          color: #444; }
+      .ui > ul li:active, .info > ul li:active {
+        background-color: #fff;
+        color: #444;
+        border-color: #444; }
+        .no-touch .ui > ul li:active, .no-touch .info > ul li:active {
+          border-color: #fff; }
     @media only screen and (max-width: 40em) {
       .ui > ul, .info > ul {
         margin: 4px auto 0;
