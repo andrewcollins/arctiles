@@ -8,8 +8,8 @@ html {
 *, *:before, *:after {
     box-sizing: inherit;
 }
-* * {
-    -webkit-tap-highlight-color: rgba(255,255,255,0.5) !important;
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-tap-highlight-color: transparent;
     user-select: none;
 }
@@ -68,7 +68,6 @@ canvas {
             padding: 6px 11px;
             border-radius: 18px;
             margin: 0 0 6px 0;
-
             &:hover {
                 cursor: pointer;
                 .no-touch & {
@@ -116,9 +115,8 @@ canvas {
             width: 20%;
             @media only screen and (min-width: $break-medium) {
                 width: 100px;
-                color: #f00 !important;
             }
-            &:hover, &:active {
+            &:hover, &:active, .no-touch &:hover, .no-touch &:active {
                 background-color: #fff;
                 cursor: default;
             }

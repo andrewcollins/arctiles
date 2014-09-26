@@ -6,8 +6,8 @@ html {
   -moz-box-sizing: inherit;
        box-sizing: inherit; }
 
-* * {
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0.5) !important;
+* {
+  -webkit-tap-highlight-color: transparent;
   -webkit-tap-highlight-color: transparent;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -107,9 +107,8 @@ canvas {
     width: 20%; }
     @media only screen and (min-width: 60em) {
       .info > ul li {
-        width: 100px;
-        color: #f00 !important; } }
-    .info > ul li:hover, .info > ul li:active {
+        width: 100px; } }
+    .info > ul li:hover, .info > ul li:active, .no-touch .info > ul li:hover, .no-touch .info > ul li:active {
       background-color: #fff;
       cursor: default; }
     .info > ul li .icon {
