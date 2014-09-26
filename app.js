@@ -1,3 +1,7 @@
+window.addEventListener('load', function() {
+    new FastClick(document.body);
+}, false);
+
 window.onload = function() {
 
 // Get a reference to the canvas object
