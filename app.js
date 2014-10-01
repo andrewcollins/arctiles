@@ -4,11 +4,20 @@ window.addEventListener('load', function() {
 
 window.onload = function() {
 
-// Get a reference to the canvas object
+
+var settings = {
+    cols: 1,
+    rows: 1,
+    size: 1,
+    sizeMod: 0,
+    monochrome: false,
+    dark: false,
+    rings: 3
+};
+var grid = [];
+var colors = [];
 var canvas = document.getElementById('papercanvas');
 
-// Create an empty project and a view for the canvas:
-paper.setup(canvas);
 
 function masterArc (size) {
     // magic nums below are cos(45) and sin(45), respectively
@@ -19,36 +28,34 @@ function masterArc (size) {
         strokeWidth: 0
     });
     // add 90 deg apex point
-    arc.join(new paper.Path({segments: [[size,0],[0,0],[0,size]]}));
+    arc.join(new paper.Path({segments: [[size,0], [0,0], [0,size]]}));
     arc.strokeWidth = 0;
-    arc.fillColor = '#ccc';
+    arc.fillColor = '#cccccc';
     return arc;
 }
 
-function buildGrid (arc,rows,cols,centerPoint) {
+function buildGrid (arc, rows, cols, centerPoint) {
     var arcs = [];
     var arcSymbols = [];
-    for (var x = 0; x < rings; x++) {
+    for (var x = 0; x < settings.rings; x++) {
         arcs[x] = arc.clone();
         arcSymbols[x] = new paper.Symbol(arcs[x]);
     }
     arc.remove();
-    var position,rotate,tlDist,trDist,llDist,lrDist;
-    var scaleFactor = 1.0;
+    var position, rotate, tlDist, trDist, llDist, lrDist;
 
     for (var i = 0; i < cols; i++) {
         grid[i] = [];
-        // directions[i] = [];
         for (var j = 0; j < rows; j++) {
             grid[i][j] = [];
             position = new paper.Point(i*arc.bounds.width+arc.bounds.width*0.5,
                                        j*arc.bounds.width+arc.bounds.width*0.5);
             rotate = Math.round(Math.random()*4)*90;
-            for (var k = 0; k < rings; k++) {
+            for (var k = 0; k < settings.rings; k++) {
                 grid[i][j][k] = [];
                 grid[i][j][k] = arcSymbols[k].place(position);
 
-                grid[i][j][k].scale(1.0-(1.0/rings)*k,grid[i][j][k].bounds.topLeft);
+                grid[i][j][k].scale(1.0-(1.0/settings.rings)*k, grid[i][j][k].bounds.topLeft);
 
                 if (centerPoint) {
                     tlDist = grid[i][j][0].bounds.topLeft.getDistance(centerPoint);
@@ -65,11 +72,11 @@ function buildGrid (arc,rows,cols,centerPoint) {
                         rotate = 180;
                     }
                 }
-                grid[i][j][k].rotate(rotate,position);
+                grid[i][j][k].rotate(rotate, position);
             }
         }
     }
-    for (var y = 0; y < rings; y++) {
+    for (var y = 0; y < settings.rings; y++) {
         arcSymbols[y].definition.fillColor = colors[y];
     }
 }
@@ -80,43 +87,43 @@ function newLayout (centerPoint) {
 
     // possible # of cols, ranked aesthetically
     if (paper.view.viewSize.width % 7 == 0) {
-        cols = 7;
+        settings.cols = 7;
     } else if (paper.view.viewSize.width % 8 == 0) {
-        cols = 8;
+        settings.cols = 8;
     } else if (paper.view.viewSize.width % 6 == 0) {
-        cols = 6;
+        settings.cols = 6;
     } else if (paper.view.viewSize.width % 9 == 0) {
-        cols = 9;
+        settings.cols = 9;
     } else if (paper.view.viewSize.width % 5 == 0) {
-        cols = 5;
+        settings.cols = 5;
     } else if (paper.view.viewSize.width % 10 == 0) {
-        cols = 10;
+        settings.cols = 10;
     } else if (paper.view.viewSize.width % 4 == 0) {
-        cols = 4;
+        settings.cols = 4;
     } else if (paper.view.viewSize.width % 11 == 0) {
-        cols = 11;
+        settings.cols = 11;
     } else {
-        cols = 7;
+        settings.cols = 7;
     }
-    cols += sizeMod;
-    if (cols < 2) cols = 2;
-    size = Math.floor(paper.view.viewSize.width/cols);
-    rows = Math.floor(paper.view.viewSize.height/size);
+    settings.cols += settings.sizeMod;
+    if (settings.cols < 2) { settings.cols = 2; }
+    settings.size = Math.floor(paper.view.viewSize.width/settings.cols);
+    settings.rows = Math.floor(paper.view.viewSize.height/settings.size);
 
     paper.project.activeLayer.removeChildren();
-    buildGrid(masterArc(size),rows,cols,centerPoint);
+    buildGrid(masterArc(settings.size), settings.rows, settings.cols, centerPoint);
     paper.view.draw();
 }
 
 function setColors() {
     var options = {};
-    if (monochrome) {
+    if (settings.monochrome) {
         options.hue = "monochrome";
     } else { options.hue = ""; }
-    if (dark) {
+    if (settings.dark) {
         options.luminosity = "dark";
     } else { options.luminosity = "bright"; }
-    for (var i = 0; i < rings; i++) {
+    for (var i = 0; i < settings.rings; i++) {
         colors[i] = randomColor(options);
     }
 }
@@ -130,7 +137,7 @@ var delay = (function(){
 })();
 
 var addEvent = function(elem, type, eventHandle) {
-    if (elem == null || typeof(elem) == 'undefined') return;
+    if (elem == null || typeof(elem) == 'undefined') { return; }
     if (elem.addEventListener) {
         elem.addEventListener(type, eventHandle, false);
     } else if (elem.attachEvent) {
@@ -146,38 +153,38 @@ addEvent(document.getElementById("jumble"), "click", function() {
     setColors();
     newLayout();
 });
-addEvent(document.getElementById("png"), "click", function() {
-});
-addEvent(document.getElementById("svg"), "click", function() {
-});
+// addEvent(document.getElementById("png"), "click", function() {
+// });
+// addEvent(document.getElementById("svg"), "click", function() {
+// });
 addEvent(document.getElementById("color"), "click", function() {
-    monochrome = !monochrome;
-    document.getElementById("color").textContent = monochrome ? "color" : "mono";
+    settings.monochrome = !settings.monochrome;
+    document.getElementById("color").textContent = settings.monochrome ? "color" : "mono";
     setColors();
     newLayout();
 });
 addEvent(document.getElementById("luminosity"), "click", function() {
-    dark = !dark;
-    document.getElementById("luminosity").textContent = dark ? "light" : "dark";
+    settings.dark = !settings.dark;
+    document.getElementById("luminosity").textContent = settings.dark ? "light" : "dark";
     setColors();
     newLayout();
 });
 addEvent(document.getElementById("addring"), "click", function() {
-    if (rings < 30) rings += 1;
+    if (settings.rings < 30) { settings.rings += 1; }
     setColors();
     newLayout();
 });
 addEvent(document.getElementById("subtractring"), "click", function() {
-    if (rings > 1) rings -= 1;
+    if (settings.rings > 1) { settings.rings -= 1; }
     setColors();
     newLayout();
 });
 addEvent(document.getElementById("smaller"), "click", function() {
-    if (sizeMod < 50) sizeMod += 1;
+    if (settings.sizeMod < 50) { settings.sizeMod += 1; }
     newLayout();
 });
 addEvent(document.getElementById("larger"), "click", function() {
-    if (Math.abs(sizeMod) < cols) sizeMod -= 1;
+    if (Math.abs(settings.sizeMod) < settings.cols) { settings.sizeMod -= 1; }
     newLayout();
 });
 addEvent(document.getElementById("info"), "click", function() {
@@ -187,15 +194,6 @@ addEvent(document.getElementById("closeinfo"), "click", function() {
     document.getElementById("slide").className = "";
 });
 
-var grid = [];
-var directions = [];
-var colors = [];
-
-var cols, rows, size;
-var sizeMod = 0;
-var monochrome, dark = false;
-var rings = 3;
-
 // view.onFrame = function (event) {
 // };
 
@@ -204,15 +202,18 @@ interact.activate();
 interact.onMouseDown = function onMouseUp(event) {
     setColors();
     newLayout(event.point);
-}
+};
 interact.onKeyUp = function onKeyUp(event) {
     if (event.character == 'j' || event.character == 'J') {
         setColors();
         newLayout();
     }
-}
+};
 
+
+paper.setup(canvas);
 setColors();
 newLayout();
+
 
 };
